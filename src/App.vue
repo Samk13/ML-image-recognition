@@ -26,7 +26,7 @@
     <div class="md:flex bg-teal-400 rounded-lg p-4 space-x-4">
       <div class>
         <div class="w-full bg-white rounded-lg shadow-lg" v-show="img">
-          <img ref="image" alt="Uploaded image" :src="img" class="p-2">
+          <img ref="image" alt="Uploaded image" :src="img" class="w-screen">
           <div class="results">
             {{ result.label }}
             {{ result.confidence }}%
@@ -42,10 +42,7 @@
     </div>
     <footer class="footer">
       <div class="content has-text-centered">
-        <p>
-          Made by
-          <a href="https://twitter.com/Carwack">@Carwack</a> 2020.
-        </p>
+        <p>2020.</p>
       </div>
     </footer>
   </div>

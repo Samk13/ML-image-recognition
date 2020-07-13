@@ -1,57 +1,64 @@
 <template>
-  <div id="app">
-    <loading v-if="!isModelLoaded"></loading>
-    <div class="content columns">
-      <div class="upload-wrapper column is-half">
-        <div class="image-wrapper" v-show="img">
-           <img ref="image" alt="Uploaded image" :src="img" />
+  <div id="app" class="container mx-auto space-y-2">
+    <loading class="bg-blue-200 text-xl font-black" v-if="!isModelLoaded"></loading>
+    <div class="py-10 bg-teal-400 font-black text-4xl text-center rounded-lg">IMG -> AI -> GIF</div>
+    <div class="bg-green-400 p-4 rounded-lg">
+      <div class="flex w-full items-center justify-center">
+        <label
+          class="w-full flex flex-col items-center px-4 py-3 bg-white text-blue rounded-lg shadow-lg font-black uppercase border border-blue cursor-pointer hover:bg-blue hover:text-green-400"
+        >
+          <svg
+            class="w-8 h-8"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+          >
+            <path
+              d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z"
+            ></path>
+          </svg>
+          <span class="mt-2">Upload your image</span>
+          <input type="file" class="hidden" name="uploadImage" @change="uploadImage">
+        </label>
+      </div>
+    </div>
+
+    <div class="md:flex bg-teal-400 rounded-lg p-4 space-x-4">
+      <div class>
+        <div class="w-full bg-white rounded-lg shadow-lg" v-show="img">
+          <img ref="image" alt="Uploaded image" :src="img" class="p-2">
           <div class="results">
             {{ result.label }}
             {{ result.confidence }}%
           </div>
         </div>
-        <div class="file has-name is-boxed">
-          <label class="file-label">
-            <input class="file-input" type="file" name="uploadImage" @change="uploadImage" />
-            <span class="file-cta">
-              <span class="file-icon">
-                <img src="@/assets/_ionicons_svg_md-cloud-upload.svg" alt="Upload icon" />
-              </span>
-              <span class="file-label">
-                Choose a file...
-              </span>
-            </span>
-            <span class="file-name">
-              {{ imgName }}
-            </span>
-          </label>
-        </div>
       </div>
-      <div class="result-wrapper column"  v-show="img">
-        <div class="giphy-wrapper">
-          <div class="giphy-wrapper">
-            <img :src="result.giphy" :alt="result.alt" />
-            <a :href="result.giphyUrl">via GIPHY</a>
-          </div>
+      <div class="w-full bg-white rounded-lg shadow-lg" v-show="img">
+        <div class>
+          <img :src="result.giphy" :alt="result.alt">
+          <p>{{result.alt }}</p>
         </div>
       </div>
     </div>
     <footer class="footer">
       <div class="content has-text-centered">
-        <p>Made by <a href="https://twitter.com/Carwack">@Carwack</a> 2020.</p>
+        <p>
+          Made by
+          <a href="https://twitter.com/Carwack">@Carwack</a> 2020.
+        </p>
       </div>
     </footer>
   </div>
 </template>
 
 <script>
-import ml5 from 'ml5'
-import axios from 'axios'
+import ml5 from "ml5";
+import axios from "axios";
 
-import Loading from './components/Loading.vue'
+import Loading from "./components/Loading.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Loading
   },
@@ -60,137 +67,72 @@ export default {
       classifier: {},
       isModelLoaded: false,
       result: {
-        label: '',
+        label: "",
         confidence: 0,
-        giphy: '',
-        giphyUrl: '',
-        alt: ''
+        giphy: "",
+        giphyUrl: "",
+        alt: ""
       },
-      img: '',
-      imgName: 'Upload an image to start'
-    }
+      img: "",
+      imgName: "Upload an image to start"
+    };
   },
   mounted: function() {
-    this.classifier = ml5.imageClassifier('MobileNet', this.modelLoaded)
+    this.classifier = ml5.imageClassifier("MobileNet", this.modelLoaded);
   },
   methods: {
     modelLoaded: function() {
-      console.log('Model Loaded!')
-      this.isModelLoaded = true
+      console.log("Model Loaded!");
+      this.isModelLoaded = true;
     },
     classify: function() {
       // https://github.com/ml5js/ml5-library/blob/development/src/utils/IMAGENET_CLASSES.js
       this.classifier.classify(this.$refs.image, (err, results) => {
         if (err) {
-          console.error(err)
+          console.error(err);
         } else {
-          console.log(results)
-          this.result.label = results[0].label
-          this.result.confidence = (results[0].confidence * 100).toFixed(2)
-          this.getGiphy()
+          console.log(results);
+          this.result.label = results[0].label;
+          this.result.confidence = (results[0].confidence * 100).toFixed(2);
+          this.getGiphy();
         }
-      })
+      });
     },
     uploadImage: function(event) {
-      const image = event.target.files[0]
-      const reader = new FileReader()
-      this.imgName = event.target.files[0].name
-      reader.readAsDataURL(image)
-      reader.onload = (e) => {
-        this.img = e.target.result
-        this.classify()
-      }
+      const image = event.target.files[0];
+      const reader = new FileReader();
+      this.imgName = event.target.files[0].name;
+      reader.readAsDataURL(image);
+      reader.onload = e => {
+        this.img = e.target.result;
+        this.classify();
+      };
     },
     getGiphy: function() {
       // https://developers.giphy.com/docs/sdk/#web
-      const url = 'https://api.giphy.com/v1/gifs/search?api_key=gnHx8iIxLiE3MLUDnVWJ6pcWDlI8LGqL&limit=1&q='
-      this.result.giphy = require('@/assets/timer.svg')
-      this.result.alt = 'loading gif'
-      this.result.giphyUrl = ''
+      const url =
+        "https://api.giphy.com/v1/gifs/search?api_key=gnHx8iIxLiE3MLUDnVWJ6pcWDlI8LGqL&limit=1&q=";
+      this.result.giphy = require("@/assets/timer.svg");
+      this.result.alt = "loading gif";
+      this.result.giphyUrl = "";
       axios
-        .get(url + this.result.label + '&offset=' + Math.floor(Math.random() * 100 + 1))
-        .then((response) => {
-          const responseData = response.data.data[0]
-          console.log(responseData)
-          this.result.giphy = responseData.images.original.url
-          this.result.alt = responseData.title
-          this.result.giphyUrl = responseData.url
+        .get(
+          url +
+            this.result.label +
+            "&offset=" +
+            Math.floor(Math.random() * 100 + 1)
+        )
+        .then(response => {
+          const responseData = response.data.data[0];
+          console.log(responseData);
+          this.result.giphy = responseData.images.original.url;
+          this.result.alt = responseData.title;
+          this.result.giphyUrl = responseData.url;
         })
-        .catch((e) => {
-          this.errors.push(e)
-        })
+        .catch(e => {
+          this.errors.push(e);
+        });
     }
   }
-}
+};
 </script>
-
-<style lang="scss">
-@import '~bulma/css/bulma.css';
-
-body {
-  margin: 0;
-}
-
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-
-  .content {
-    margin: 0;
-    height: calc(100vh - 100px);
-  }
-
-  .result-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    .giphy-wrapper {
-      max-width: 80%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      img {
-        max-width: 100%;
-        max-height: 70vh;
-      }
-    }
-  }
-
-  .upload-wrapper {
-    background-color: #00c4a7;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    .image-wrapper {
-      width: 70%;
-      border-radius: 10px 10px 10px 10px;
-      -moz-border-radius: 10px 10px 10px 10px;
-      -webkit-border-radius: 10px 10px 10px 10px;
-      border: 10px double #e8e8e8;
-      padding: 5px;
-      margin-bottom: 20px;
-      img {
-        max-width: 100%;
-        max-height: 30vh;
-      }
-    }
-    .file-name {
-      text-align: center;
-    }
-  }
-  .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    background-color: #ffffff;
-    padding: 1.5rem 1.5rem 3rem;
-  }
-}
-</style>

@@ -1,7 +1,7 @@
 # ml5-gif-demo
 
-<img src="https://avatars2.githubusercontent.com/u/36965392?v=4" alt="ml5 logo"/>
-<img src="https://cdn.iconscout.com/icon/free/png-256/vue-282497.png" alt="Vuejs logo"/>
+<img src="https://avatars2.githubusercontent.com/u/36965392?v=4" width="50%" alt="ml5 logo"/><img src="https://cdn.iconscout.com/icon/free/png-256/vue-282497.png" width="50%" alt="Vuejs logo"/>
+
 
 vue           |  ml5
 :-------------------------:|:-------------------------:

@@ -1,5 +1,7 @@
 # ml5-gif-demo
 
+<img src="https://avatars2.githubusercontent.com/u/36965392?v=4" alt="ml5 logo"/>
+<img src="https://c7.uihere.com/files/70/60/845/vue-js-javascript-library-github-github.jpg" alt="Vuejs logo"/>
 ## Project setup
 ```
 yarn install

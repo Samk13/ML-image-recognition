@@ -1,6 +1,5 @@
 # ml5-gif-demo
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/512px-Typescript_logo_2020.svg.png" height="200px" width="200px" alt="ml5 logo"/><img src="https://cdn.iconscout.com/icon/free/png-256/vue-282497.png" width="200px" height="200px" alt="Vuejs logo"/>
+<img src="https://avatars2.githubusercontent.com/u/36965392?v=4" width="50%" alt="ml5 logo"/><img src="https://cdn.iconscout.com/icon/free/png-256/vue-282497.png" width="50%" alt="Vuejs logo"/>
 
 ## Project setup
 ```

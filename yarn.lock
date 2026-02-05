@@ -9543,13 +9543,13 @@ vega-expression@^5.0.1:
     "@types/estree" "^1.0.0"
     vega-util "^1.17.1"
 
-vega-expression@^5.1.2:
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/vega-expression/-/vega-expression-5.1.2.tgz#1ed0677787b8e5f4047c9b847ecc20da0a2a8d05"
-  integrity sha512-fFeDTh4UtOxlZWL54jf1ZqJHinyerWq/ROiqrQxqLkNJRJ86RmxYTgXwt65UoZ/l4VUv9eAd2qoJeDEf610Umw==
+vega-expression@^5.2.1:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/vega-expression/-/vega-expression-5.2.1.tgz#04de5967b8f0dd0d599e5c64cc90d11d1e1d6c14"
+  integrity sha512-9KKbI2q9qTI55NSjD/dVWg3aeCtw+gwyWCiLMM47ha6iXrAN9pQ+EKRJfxOHuoDfCTlJJTaUfnnXgbqm0HEszg==
   dependencies:
     "@types/estree" "^1.0.0"
-    vega-util "^1.17.3"
+    vega-util "^1.17.4"
 
 vega-force@^4.0.1:
   version "4.0.3"
@@ -9751,13 +9751,13 @@ vega-schema-url-parser@^1.1.0:
   integrity sha512-Tc85J2ofMZZOsxiqDM9sbvfsa+Vdo3GwNLjEEsPOsCDeYqsUHKAlc1IpbbhPLZ6jusyM9Lk0e1izF64GGklFDg==
 
 vega-selections@^5.4.1:
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/vega-selections/-/vega-selections-5.5.0.tgz#ccdd2320ea13d619f2ba2595301b7d280e4b473b"
-  integrity sha512-TkpklUg9yhKjnTEs3Ls0eSI2aMJ8+tRicrFAKlDyrEBNMSSEaMsSJ84Ro5xpRra+GMBkGXFYgwTPC7y3tj20Gg==
+  version "5.6.3"
+  resolved "https://registry.yarnpkg.com/vega-selections/-/vega-selections-5.6.3.tgz#408ed78b4f0f4864bb092df67774b326812b5f87"
+  integrity sha512-DXd+XVKcIjBAtSCcgtPx7cXuqG/7L98SWoFh6GKNu26EBUyn3zm0GAlZxNLPoI01Jz9Fb3YpSsewk2aIAbM68g==
   dependencies:
     d3-array "3.2.4"
-    vega-expression "^5.1.2"
-    vega-util "^1.17.3"
+    vega-expression "^5.2.1"
+    vega-util "^1.17.4"
 
 vega-statistics@^1.4.0, vega-statistics@^1.7.1, vega-statistics@^1.7.3:
   version "1.7.3"
@@ -9839,10 +9839,10 @@ vega-util@^1.17.1:
   resolved "https://registry.yarnpkg.com/vega-util/-/vega-util-1.17.1.tgz#717865fc6b660ceb3ae16273d21166ed471c2db4"
   integrity sha512-ToPkWoBdP6awoK+bnYaFhgdqZhsNwKxWbuMnFell+4K/Cb6Q1st5Pi9I7iI5Y6n5ZICDDsd6eL7/IhBjEg1NUQ==
 
-vega-util@^1.17.3:
-  version "1.17.3"
-  resolved "https://registry.yarnpkg.com/vega-util/-/vega-util-1.17.3.tgz#8f24d867daae69580874dcf75de10c65ac9ede5d"
-  integrity sha512-nSNpZLUrRvFo46M5OK4O6x6f08WD1yOcEzHNlqivF+sDLSsVpstaF6fdJYwrbf/debFi2L9Tkp4gZQtssup9iQ==
+vega-util@^1.17.4:
+  version "1.17.4"
+  resolved "https://registry.yarnpkg.com/vega-util/-/vega-util-1.17.4.tgz#b35781fe8e8d030e6519746682843d7ef9ff6d27"
+  integrity sha512-+y3ZW7dEqM8Ck+KRsd+jkMfxfE7MrQxUyIpNjkfhIpGEreym+aTn7XUw1DKXqclr8mqTQvbilPo16B3lnBr0wA==
 
 vega-util@~1.12.1:
   version "1.12.2"
